@@ -16,11 +16,6 @@ package com.activeandroid.sebbia;
  * limitations under the License.
  */
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -36,6 +31,11 @@ import com.activeandroid.sebbia.query.Select;
 import com.activeandroid.sebbia.serializer.TypeSerializer;
 import com.activeandroid.sebbia.util.Log;
 import com.activeandroid.sebbia.util.ReflectionUtils;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @SuppressWarnings("unchecked")
 public abstract class Model {
@@ -103,7 +103,7 @@ public abstract class Model {
 
 	public static <T extends Model> T load(Class<T> type, long id) {
 		T model = (T) Cache.getEntity(type, id);
-		if (model == null) { 
+		if (model == null) {
 			TableInfo tableInfo = Cache.getTableInfo(type);
 			model = new Select().from(type).where(tableInfo.getIdName() + "=?", id).executeSingle();
 		}
@@ -128,8 +128,8 @@ public abstract class Model {
 				}
 			} else {
 				fillContentValues(entity, values);
-				db.update(entity.mTableInfo.getTableName(), values, "Id=" + entity.mId, null);
-			}
+                db.update(entity.mTableInfo.getTableName(), values, entity.mTableInfo.getIdName() + "=" + entity.mId, null);
+            }
 		}
 	}
 
@@ -320,7 +320,7 @@ public abstract class Model {
 	protected String getIdName() {
 		return idName;
 	}
-	
+
 	protected void setModelId(long id) {
 		mId = id;
 	}
