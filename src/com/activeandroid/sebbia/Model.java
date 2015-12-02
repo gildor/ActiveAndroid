@@ -77,10 +77,6 @@ public abstract class Model {
 				.notifyChange(ContentProvider.createUri(mTableInfo.getType(), mId), null);
 	}
 
-	protected void preSave(){
-		//Override it to execute logic before save() method would be called
-	}
-
 	public final Long save() {
 		preSave();
 		SQLiteDatabase db = Cache.openDatabase();
@@ -328,6 +324,10 @@ public abstract class Model {
 
 	protected void setModelId(long id) {
 		mId = id;
+	}
+
+	protected void preSave(){
+		//Override it to execute logic before save() method would be called
 	}
 
 	// ////////////////////////////////////////////////////////////////////////////////////
