@@ -35,5 +35,5 @@ tmp
 
 # Gradle
 .gradle
-/build
+build
 /out
