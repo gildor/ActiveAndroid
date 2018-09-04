@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.org/pardom/ActiveAndroid.png?branch=master)](https://travis-ci.org/pardom/ActiveAndroid) [![Stories in Ready](https://badge.waffle.io/pardom/ActiveAndroid.png)](http://waffle.io/pardom/ActiveAndroid)  
 # ActiveAndroid
 
+Version 3.5.0 split up runtime dependencies and annotation processor
+
 ActiveAndroid is an active record style ORM ([object relational mapper](http://en.wikipedia.org/wiki/Object-relational_mapping)). What does that mean exactly? Well, ActiveAndroid allows you to save and retrieve SQLite database records without ever writing a single SQL statement. Each database record is wrapped neatly into a class with methods like _save()_ and _delete()_.
 
 ActiveAndroid does so much more than this though. Accessing the database is a hassle, to say the least, in Android. ActiveAndroid takes care of all the setup and messy stuff, and all with just a few simple steps of configuration.
@@ -10,8 +12,8 @@ ActiveAndroid does so much more than this though. Accessing the database is a ha
 Grab via Maven:
 ```xml
 <dependency>
-  <groupId>com.michaelpardo</groupId>
-  <artifactId>activeandroid</artifactId>
+  <groupId>com.michaelpardo.activeandroid</groupId>
+  <artifactId>library</artifactId>
   <version>3.1.0-SNAPSHOT</version>
 </dependency>
 ```
@@ -22,7 +24,8 @@ repositories {
     maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
-compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+compile 'com.michaelpardo.activeandroid:library:3.5.0-SNAPSHOT'
+annotationProcessor 'com.michaelpardo.activeandroid:processor:3.5.0-SNAPSHOT'
 ```
 
 ## Documentation
